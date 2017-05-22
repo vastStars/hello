@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+    <mvc:resources mapping="/lib/**" location="/lib/" />
+    <mvc:view-controller path="/login.html" view-name="/login" />
+
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPaths">
+            <list>
+
+                <value>/WEB-INF/view</value>
+                <value>/WEB-INF/templates</value>
+            </list>
+        </property>
+        <!-- <property name="templateLoaderPath" value="/WEB-INF/screen" /> -->
+        <property name="defaultEncoding" value="UTF-8" />
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="auto_import">spring.ftl as spring</prop>
+                <prop key="template_update_delay">2</prop><!-- 模板更新检查时间(秒) -->
+                <prop key="number_format">#</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="time_format">HH:mm:ss</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <!--  <prop key="classic_compatible">true</prop> -->
+            </props>
+        </property>
+    </bean>
+
+    <!-- HandlerMapping -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+
+    <!-- HandlerAdapter -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+
+    <bean name="/hello" class="hello.system.controllers.LoginController"/>
+    <import resource="controllers.xml" />
+
+
+</beans>
