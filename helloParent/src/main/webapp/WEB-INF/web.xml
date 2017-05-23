@@ -8,24 +8,24 @@
   <description>hello-world</description>
 
   <!--context-param元素声明应用范围内的初始化参数-->
-  <context-param>
+ <!-- <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath*:/spring/applicationContext*.xml</param-value>
   </context-param>
   <context-param>
     <param-name>spring.profiles.default</param-name>
     <param-value>default</param-value>
-  </context-param>
+  </context-param>-->
 
   <!--servlet API的版本2.3增加了对事件监听程序的支持，事件监听程序在建立、修改和删除
     会话或servlet环境时得到通知。Listener元素指出事件监听程序类-->
-  <listener>
+  <!--<listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+  </listener>-->
 
   <!--过滤器元素将一个名字与一个实现javax.servlet.Filter接口的类相关联-->
-  <filter>
-    <!-- 配置编码 -->
+  <!--<filter>
+    &lt;!&ndash; 配置编码 &ndash;&gt;
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
     <init-param>
@@ -37,11 +37,11 @@
       <param-value>true</param-value>
     </init-param>
   </filter>
-  <!--一旦命名了一个过滤器，就要利用filter-mapping元素把它与一个或多个servlet或JSP页面相关联-->
+  &lt;!&ndash;一旦命名了一个过滤器，就要利用filter-mapping元素把它与一个或多个servlet或JSP页面相关联&ndash;&gt;
   <filter-mapping>
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  </filter-mapping>-->
 
   <!--在向servlet或JSP页面制定初始化参数或定制URL时，必须首先命名servlet或JSP页面。
     Servlet元素就是用来完成此项任务的-->

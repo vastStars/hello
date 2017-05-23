@@ -10,6 +10,5 @@
                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
                            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
-    <bean id="coreApplicationListener" class="hello.core.ApplicationListenerBean"/>
 
 </beans>
