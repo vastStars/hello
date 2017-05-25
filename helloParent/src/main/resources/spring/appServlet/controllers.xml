@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+    <context:annotation-config/>
+    <!-- <context:annotation-config/>的作用是向Spring容器注册以下四个BeanPostProcessor
+        AutowiredAnnotationBeanPostProcessor
+        CommonAnnotationBeanPostProcessor
+        PersistenceAnnotationBeanPostProcessor
+        RequiredAnnotationBeanPostProcessor
+
+        1、如果想使用@Autowired注解，那么就必须事先在 Spring 容器中声明 AutowiredAnnotationBeanPostProcessor Bean。
+            传统声明方式如下：
+            <bean class="org.springframework.beans.factory.annotation. AutowiredAnnotationBeanPostProcessor "/>
+        2、如果想使用@ Resource 、@ PostConstruct、@ PreDestroy等注解就必须声明CommonAnnotationBeanPostProcessor的Bean。
+        3、如果想使用@PersistenceContext注解，就必须声明PersistenceAnnotationBeanPostProcessor的Bean。
+        4、如果想使用@Required的注解，就必须声明RequiredAnnotationBeanPostProcessor的Bean。
+
+        以上这些注解是很常用的，如果按照传统的方式进行配置将会非常繁琐，所以Spring给我们提供了一个简便的方式：
+        <context:annotation-config/>，使用该元素可以自动声明以上注解。
+        注：由于<context:component-scan base-package=”xx.xx”/>也包含了自动注入上述Bean的功能，
+        所以<context:annotation-config/> 可以省略。如果两者都进行了配置，则只有前者有效。
+        -->
+    <!-- Scans within the base package of the application for @Components to configure as beans -->
+    <context:component-scan base-package="**.controllers" />
+
+
+
+</beans>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+    <bean id="methodInvoking" class="com.hello.system.demo.MethodInvokingFactory"></bean>
+    <!-- MethodInvokingFactoryBean 可注入方法返回值-->
+    <bean id="iWantKnow" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <!--
+            实例方法 targetObject
+            静态方法 targetClass
+         -->
+        <property name="targetObject" ref="methodInvoking"></property>
+        <property name="targetMethod" value="getAge"></property>
+        <property name="arguments">
+            <list>
+                <!-- 设置 property 的 value -->
+                <value>"真的 "</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 注解支持 主要作用于@Controller激活该模式下面是一种简写形式
+          它会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter，
+          是spring MVC为@Controllers分发请求所必须的 -->
+    <mvc:annotation-driven/>
+
+    <!-- 访问静态资源 -->
+    <mvc:resources mapping="/view/**" location="/WEB-INF/view/"/>
+    <!--<mvc:resources mapping="/lib/**" location="/lib/" />-->
+    <!-- 访问静态资源 -->
+    <!--<mvc:default-servlet-handler/>   -->
+
+    <!-- 视图解析器 -->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"></property>
+        <property name="suffix" value=".html"></property>
+       &lt;!&ndash;  配置解析器的优先级别  &ndash;&gt;
+        <property name="order" value="1"></property>
+    </bean>-->
+
+    <!-- 配置freeMarker的模板路径 -->
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPaths">
+            <list>
+                <value>/WEB-INF/view</value>
+            </list>
+        </property>
+        <!-- <property name="templateLoaderPath" value="/WEB-INF/screen" /> -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="freemarkerSettings">
+            <props>
+                <!--表示每个freemarker的视图页面都会自动引入这个ftl文件-->
+                <prop key="auto_import">spring.ftl as spring</prop>
+                <prop key="template_update_delay">2</prop><!-- 模板更新检查时间(秒) -->
+                <prop key="number_format">#</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="time_format">HH:mm:ss</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <!--如果变量为null,转化为空字符串,比如做比较的时候按照空字符做比较-->
+                <!--  <prop key="classic_compatible">true</prop> -->
+                <!--去掉多余的空格-->
+                <!--<prop key="whitespace_stripping">true</prop>-->
+            </props>
+        </property>
+    </bean>
+
+    <!-- 配置freeMarker视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="cache" value="false"/>
+        <!--如果Controller中返回视图加了后缀html或者ftl，在配置中就不要加入suffix配置，否则会找不到页面-->
+        <property name="suffix" value=".html"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <!-- 在页面中使用${base.contextPath}就可获得contextPath -->
+        <property name="requestContextAttribute" value="base"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="allowSessionOverride" value="true"/>
+        <!--配置解析器的优先级别-->
+        <property name="order" value="0"></property>
+    </bean>
+
+    <!-- 配置扫描的包 -->
+    <import resource="controllers.xml"></import>
+
+
+</beans>
