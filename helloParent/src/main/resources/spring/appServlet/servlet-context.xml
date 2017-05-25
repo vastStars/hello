@@ -22,7 +22,7 @@
         <property name="arguments">
             <list>
                 <!-- 设置 property 的 value -->
-                <value>"真的"</value>
+                <value>"真的 "</value>
             </list>
         </property>
     </bean>
