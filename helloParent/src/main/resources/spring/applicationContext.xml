@@ -10,5 +10,11 @@
                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
                            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
+    <context:property-placeholder location="classpath:config.properties" />
+
+    <!-- jndi dataSource-->
+    <bean id="dataSource" class="com.hello.core.JndiObjectFactoryBean">
+        <property name="jndiName" value="${db.jndiName}"/>
+    </bean>
 
 </beans>

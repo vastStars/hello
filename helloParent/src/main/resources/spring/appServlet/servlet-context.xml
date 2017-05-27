@@ -35,9 +35,14 @@
 
     <!-- 访问静态资源 -->
     <mvc:resources mapping="/view/**" location="/WEB-INF/view/"/>
-    <!--<mvc:resources mapping="/lib/**" location="/lib/" />-->
+    <mvc:resources mapping="/lib/**" location="/lib/" />
     <!-- 访问静态资源 -->
     <!--<mvc:default-servlet-handler/>   -->
+
+    <!-- path访问的路径 view-name所要的视图 -->
+    <mvc:view-controller path="/login.html" view-name="login" />
+    <!-- 重定向当前路径是/index 则重定向到/ -->
+    <!--<mvc:view-controller path="/index" view-name="redirect:/" />-->
 
     <!-- 视图解析器 -->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -82,6 +87,9 @@
         <property name="contentType" value="text/html;charset=UTF-8"/>
         <!-- 在页面中使用${base.contextPath}就可获得contextPath -->
         <property name="requestContextAttribute" value="base"/>
+       <!-- 其中的exposeRequestAttributes  exposeSessionAttributes两个属性都被设置为true。
+        结果是请求和会话属性都被复制到模板的属性集中，可以使用FreeMarker的表达式语言来访问并显示。
+        使用这些宏，必须设置FreeMarkerViewResolver的exposeSpringMacroHelpers属性为true-->
         <property name="exposeRequestAttributes" value="true"/>
         <property name="exposeSessionAttributes" value="true"/>
         <property name="exposeSpringMacroHelpers" value="true"/>
