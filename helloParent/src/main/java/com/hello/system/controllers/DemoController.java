@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * @author zili.wang@hand-china.com 2017/5/23 10:22
+ * @author zili.wang 2017/5/23 10:22
  * @version 1.0
  * @name DemoController
  * @description

@@ -1,7 +1,7 @@
 package com.hello.system.demo;
 
 /**
- * @author zili.wang@hand-china.com 2017/5/25 15:44
+ * @author zili.wang 2017/5/25 15:44
  * @version 1.0
  * @name MethodInvokingFactory
  * @description

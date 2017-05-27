@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * @author zili.wang@hand-china.com 2017/5/27 13:46
+ * @author zili.wang 2017/5/27 13:46
  * @version 1.0
  * @name Demo
  * @description
