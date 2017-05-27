@@ -16,10 +16,6 @@
     <param-name>spring.profiles.default</param-name>
     <param-value>default</param-value>
   </context-param>
-  <context-param>
-    <param-name/>
-    <param-value/>
-  </context-param>
 
   <!--servlet API的版本2.3增加了对事件监听程序的支持，事件监听程序在建立、修改和删除
     会话或servlet环境时得到通知。Listener元素指出事件监听程序类-->
