@@ -32,6 +32,18 @@ public class DemoController {
         System.out.println("--------------000----------");
         logger.info("slf4j + logback");
         Object  m = beanFactory.getBean("iWantKnow");
+        System.out.println(m.toString());
+        return "login";
+    }
+
+    /**
+     * @description 数据库连接测试
+     * @return void
+     * @author zili.wang 2017/5/30 14:17
+     */
+    @RequestMapping("/sqltest")
+    public void sqlConnectionTest(){
+
         DataSource dataSource = (DataSource) beanFactory.getBean("dataSource");
         Connection conn = null;
         String url= "";
@@ -58,8 +70,7 @@ public class DemoController {
                 }
             }
         }
-        System.out.println(m.toString());
         System.out.println(url);
-        return "login";
     }
+
 }
