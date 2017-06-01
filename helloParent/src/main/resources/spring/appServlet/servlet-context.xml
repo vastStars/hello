@@ -98,6 +98,11 @@
         <property name="order" value="0"></property>
     </bean>
 
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <bean class="com.hello.core.interceptor.LogbackMonitorInterceptor" />
+    </mvc:interceptors>
+
     <!-- 配置扫描的包 -->
     <import resource="controllers.xml"></import>
 

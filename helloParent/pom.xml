@@ -145,7 +145,7 @@
   </dependencies>
 
   <build>
-    <finalName>helloParent</finalName>
+    <finalName>helloParent</finalName><!-- 指定打包的包名 -->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

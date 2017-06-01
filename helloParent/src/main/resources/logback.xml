@@ -6,6 +6,9 @@
     debug: 当为true时，将打印出logback内部日志信息，实时查看logback的运行状态。default-value : false
  -->
 <Configuration  scan="true" scanPeriod="3 seconds" debug="false">
+    <!-- 设置属性 -->
+    <property name="app_HelloWorld" value="app_HelloWorld2" />
+    <contextName>${app_HelloWorld}</contextName>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
