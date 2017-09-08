@@ -36,13 +36,14 @@
     <!-- 访问静态资源 -->
     <mvc:resources mapping="/view/**" location="/WEB-INF/view/"/>
     <mvc:resources mapping="/lib/**" location="/lib/" />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
     <!-- 访问静态资源 -->
     <!--<mvc:default-servlet-handler/>   -->
 
     <!-- path访问的路径 view-name所要的视图 -->
     <mvc:view-controller path="/login.html" view-name="login" />
     <!-- 重定向当前路径是/index 则重定向到/ -->
-    <!--<mvc:view-controller path="/index" view-name="redirect:/" />-->
+    <mvc:view-controller path="/index" view-name="redirect:/" />
 
     <!-- 视图解析器 -->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

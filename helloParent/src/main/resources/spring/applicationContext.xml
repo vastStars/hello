@@ -17,4 +17,6 @@
         <property name="jndiName" value="${db.jndiName}"/>
     </bean>
 
+    <context:component-scan base-package="**.*.service"/>
+
 </beans>
