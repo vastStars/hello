@@ -13,7 +13,7 @@
         <csrf disabled="true"/>
         <intercept-url pattern="/login" access="permitAll" />
         <form-login login-page="/login" authentication-success-handler-ref="successHandler"
-         authentication-failure-handler-ref="failureHandler"/>
+                    authentication-failure-handler-ref="failureHandler"/>
 
         <logout logout-url="/logout" success-handler-ref="logoutSuccessHandler"/>
     </http>
@@ -36,5 +36,31 @@
 
     <beans:bean id="logoutSuccessHandler" class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
     </beans:bean>
+
+    <!--<beans:bean id="myAuthFilter" class=
+            "org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+        <beans:property name="sessionAuthenticationStrategy" ref="sas" />
+        &lt;!&ndash;<beans:property name="authenticationManager" ref="authenticationManager" />&ndash;&gt;
+    </beans:bean>
+
+    <beans:bean id="sas" class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+        <beans:constructor-arg>
+            <beans:list>
+                <beans:bean class="org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy">
+                    <beans:constructor-arg ref="sessionRegistry"/>
+                    <beans:property name="maximumSessions" value="1" />
+                    <beans:property name="exceptionIfMaximumExceeded" value="true" />
+                </beans:bean>
+                <beans:bean class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy">
+                </beans:bean>
+                <beans:bean class="org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy">
+                    <beans:constructor-arg ref="sessionRegistry"/>
+                </beans:bean>
+            </beans:list>
+        </beans:constructor-arg>
+    </beans:bean>
+
+    <beans:bean id="sessionRegistry"
+                class="org.springframework.security.core.session.SessionRegistryImpl" />-->
 
 </beans:beans>
