@@ -12,8 +12,8 @@
     <http>
         <csrf disabled="true"/>
         <intercept-url pattern="/login" access="permitAll" />
-        <form-login login-page="/login" authentication-success-handler-ref="successHandler"
-                    authentication-failure-handler-ref="failureHandler"/>
+        <form-login login-page="/login" authentication-success-handler-ref="loginSuccessHandler"
+                    authentication-failure-handler-ref="loginFailureHandler"/>
 
         <logout logout-url="/logout" success-handler-ref="logoutSuccessHandler"/>
     </http>
@@ -26,11 +26,11 @@
 
     <beans:bean id="passwordManager" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"></beans:bean>
 
-    <beans:bean id="successHandler" class="com.hello.system.CustomAuthenticationSuccessHandler">
+    <beans:bean id="loginSuccessHandler" class="com.hello.system.CustomAuthenticationSuccessHandler">
         <!--<beans:property name="defaultTargetUrl" value="/demo"/>-->
     </beans:bean>
 
-    <beans:bean id="failureHandler" class="com.hello.system.CustomAuthenticationFailureHandler">
+    <beans:bean id="loginFailureHandler" class="com.hello.system.CustomAuthenticationFailureHandler">
 
     </beans:bean>
 
